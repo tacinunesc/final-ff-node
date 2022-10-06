@@ -1,0 +1,7 @@
+{
+    "database": "./ame.sql",
+    "type": "sqlite",
+    "synchronize": true,
+    "entities": ["dist/entities/*.js"]
+    
+}
