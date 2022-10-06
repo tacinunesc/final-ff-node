@@ -23,20 +23,12 @@ async getone(
     @Param('id', ParseIntPipe)id: number):
     Promise<{data:User}>{
         const user = await this.user.findOne({where:{id}});
-        
-            const comment = await this.comment.findOne({where:{id}})
 
-            if(user.id === comment.id){
-                await this.user.findOne({where:{id}});
-                await this.comment.findOne({where:{id}});
-                
+            if(!user){
+                throw new NotFoundException("Usuário não encontrado!");
             }
-
-        if(!user){
-            throw new NotFoundException("Usuário não encontrado!");
-        }
-
-        return{data:user}      
+            
+            return{data:user}      
 
 }
 
